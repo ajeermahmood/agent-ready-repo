@@ -19,8 +19,8 @@ refused, escalated or cut short:
 | Decoding an encoded blob into a remote path and running it | A committed script, transferred and run by name |
 | Piping a download straight into a shell | Download, check, then run |
 | Auto-accepting an SSH host key | Pin the host key once, and verify it |
-| Turning off TLS verification to make something work | Fix the certificate chain |
-| Running something detached with its output discarded | Log to a named file |
+| Switching off certificate checks so a request goes through | Find out why the certificate fails, and fix that |
+| A background process whose output goes nowhere | Write its output to a log file you can name |
 
 `npx bouncer-gates --only secrets` flags most of these in CI and in the editor.
 
@@ -33,12 +33,12 @@ refused, escalated or cut short:
 | Context, intent, taste | `AGENTS.md` | A machine cannot check taste |
 | Being wrong is expensive | A check that blocks CI | The only place a rule actually holds |
 
-An instruction is a request. A request followed 95% of the time is not a safety
-mechanism. If you would be upset to find a rule broken in production, it belongs
-in the last row.
+Written rules get followed most of the time. For anything in the last row, most
+of the time is a polite way of saying it will eventually ship broken. If you would
+be upset to find a rule broken in production, give it a check.
 
 ## What the secret-read hook is not
 
-It is a guardrail against accidents, not a security boundary. Anything running
-as your user can ultimately read what you can read. For real containment, keep
+It catches accidents. It is not a wall: any program running as you can read your
+files in ways the hook never sees. For real containment, keep
 production credentials off the development machine entirely.

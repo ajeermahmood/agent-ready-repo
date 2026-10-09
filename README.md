@@ -58,13 +58,13 @@ Put each rule in the cheapest place that can actually hold it.
 | Context, intent, "prefer this" | `AGENTS.md` |
 | Anything expensive to get wrong | A check that blocks CI, and runs in the editor too |
 
-Most teams start with a long instructions file and hope. An instruction is a
-request, and a request followed 95% of the time is not a safety mechanism.
+The usual first move is a long instructions file. It helps, but an agent follows
+written rules most of the time, not all of the time, and the expensive mistakes
+live in the gap.
 
 ## Honest limits
 
-- **The secret-read hook is a guardrail, not a security boundary.** It stops
-  accidents. Anything running as your user can read what you can read. Keep
+- **The secret-read hook catches accidents, nothing more.** It is not a wall. Anything running as your user can read what you can read. Keep
   production credentials off the development machine.
 - **The checks match patterns; they do not understand your code.** That is why
   the `tenant-check` skill exists for what they cannot see, and why a person

@@ -18,13 +18,13 @@
 about it that a capable newcomer would get wrong. For a multi-tenant app that is
 usually: "every tenant-owned table is scoped by tenantId".>
 
-## Start here every session
+## At the start of each session
 
-1. Read [docs/LEDGER.md](docs/LEDGER.md): the live worklist and the most recent
-   entries. Older history is in [docs/ledger/](docs/ledger/). Search it, never
-   read it whole.
-2. Open only the doc your task needs from the map below.
-3. When you finish, append one entry to the ledger in the format at its top.
+1. Open [docs/LEDGER.md](docs/LEDGER.md) for the current worklist and the latest
+   entries. Past months are archived in [docs/ledger/](docs/ledger/); search
+   them for what you need instead of reading them through.
+2. From the map below, open the one or two docs this task actually needs.
+3. Before you stop, add one dated entry to the ledger, in the format it shows.
 
 ## Non-negotiable rules
 

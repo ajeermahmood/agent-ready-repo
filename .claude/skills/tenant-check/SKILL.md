@@ -1,6 +1,6 @@
 ---
 name: tenant-check
-description: Review the current diff, or named files, for multi-tenant isolation risks, meaning any database access that could read or write another tenant's rows. Runs the static check first, then does the semantic review it structurally cannot. Use before committing any change that touches the database.
+description: Check a database change for any way one tenant could read or change another tenant's rows. Runs the bouncer-gates scope check, then reads the change for the cases a pattern check cannot see. Use before committing anything that touches the database.
 ---
 
 # Tenant-isolation review
