@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    name: Gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Without full history the migration gate cannot tell which files are
+          # new, and reports "skipped" rather than "passed". This line is what
+          # makes that gate real.
+          fetch-depth: 0
+
+      # The same checks the agent hears about in the editor, so nothing that
+      # was fixed there can come back through a merge.
+      - uses: ajeermahmood/bouncer-gates@v0
+        with:
+          version: "0.5.0"
+          sarif: "false"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The secret-read hook is a guardrail, so it gets tests like one. Half of
+      # them assert it stays quiet on ordinary work.
+      - name: Hook tests
+        run: python -m unittest discover -s .claude/hooks -p "test_*.py"
+
+  # Add your own build, lint, typecheck and test steps below. Agent changes go
+  # through exactly the same jobs as everyone else's. No lighter path.

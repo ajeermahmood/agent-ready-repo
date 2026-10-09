@@ -1,0 +1,10 @@
+{
+  "exclude": [".claude/hooks/test_*.py"],
+  "scope": {
+    "models": [],
+    "tables": [],
+    "column": "tenantId",
+    "clients": ["prisma"],
+    "rawAccessor": "raw"
+  }
+}

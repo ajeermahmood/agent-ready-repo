@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "bouncer-gates": {
+      "command": "npx",
+      "args": ["-y", "bouncer-gates", "--mcp"]
+    }
+  }
+}
